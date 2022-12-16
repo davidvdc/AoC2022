@@ -5,7 +5,7 @@ import io.vavr.collection.Stream;
 public class Day10CathodeRayTube {
 
     public static void main(String[] args) {
-        String testInput="noop\n" +
+        String testInput = "noop\n" +
                 "addx 3\n" +
                 "addx -5\n";
         String testInput2 = "addx 15\n" +
@@ -310,16 +310,16 @@ public class Day10CathodeRayTube {
                             default -> throw new RuntimeException();
                         }
                 ).scanLeft(1, Integer::sum)
-                        .zipWithIndex()
-                                .map(x -> x.swap().map1(y -> y +1));
+                .zipWithIndex()
+                .map(x -> x.swap().map1(y -> y + 1));
 
         stream
-                .sliding(40,40)
+                .sliding(40, 40)
                 .forEach(line -> {
                     line.forEach(pixel -> {
-                        Integer pixelPosition = (pixel._1 % 40) -1 ;
+                        Integer pixelPosition = (pixel._1 % 40) - 1;
                         Integer spritePosition = pixel._2;
-                        if(Math.abs(pixelPosition - spritePosition) <= 1) {
+                        if (Math.abs(pixelPosition - spritePosition) <= 1) {
                             System.out.print("#");
                         } else {
                             System.out.print(" ");
